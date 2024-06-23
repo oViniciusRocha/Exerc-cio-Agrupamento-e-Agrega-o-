@@ -1,0 +1,38 @@
+create table Produtos(
+	id				integer primary key	autoincrement,
+	nome			varchar not null,
+	preco			double not null,
+	estoque			int	not null,
+	perecivel		varchar not null,
+	marca			varchar,
+	nacionalidade	varchar
+);
+
+insert into Produtos (nome, preco, estoque, perecivel, marca, nacionalidade) VALUES
+('Farinha de Milho', 8.90, 100, 'Não', 'Flocão', 'Brasil'),
+('Arroz', 20.50, 150, 'Não', 'Camil', 'Brasil'),
+('Iogurte', 3.99, 200, 'Sim', 'Parmalat', 'Brasil'),
+('Presunto', 18.99, 75, 'Sim', 'Aurora', 'Brasil'),
+('Macarrão', 4.99, 120, 'Não', 'Dona Benta', 'Brasil'),
+('Café', 11.00, 80, 'Não', 'Melitta', 'Brasil'),
+('Azeite', 22.90, 50, 'Não', 'Borges', 'Portugal'),
+('Peito de frango', 9.40, 60, 'Sim', 'Sadia', 'Brasil'),
+('Sabonete', 2.30, 200, 'Não', 'Dove', 'EUA'),
+('Maçã', 5.99, 40, 'Sim', 'Fuji', 'Brasil'),
+('Saco de lixo', 13.50, 100, 'Não', 'Plasvale', 'Brasil'),
+('Papel higiênico', 11.99, 150, 'Não', 'Suzano', 'Brasil');
+
+
+select count(id) as TotalDeProdutos from Produtos;
+
+select perecivel, avg(preco) as MediaDePreco from Produtos group by perecivel;
+
+select nome, avg(preco) as MediaDePreco from Produtos group by nome;
+
+select nome, avg(preco) as MediaDePreços, estoque from Produtos group by nome;
+
+select nome, marca, estoque, max(preco) as preco from Produtos ;
+
+select * from Produtos where preco>10.944;
+
+select nome, nacionalidade, sum(estoque) as EstoqueTotal from produtos group by nacionalidade;
